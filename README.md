@@ -109,8 +109,6 @@ El complemento, cuando sobre tiempo, es ese pintor. El orquestador sigue decidie
 
 En la Jetson no cabe un FLUX. Cabe Whisper pequeño multilingüe, para cuando la voz del navegador falle. Los LoRA de caras tristes o enojadas de Hugging Face no sirven: etiquetan una expresión, no pintan la figura de la sala.
 
-Instagram y publicar afuera quedan fuera. La obra es la pared de la sala.
-
 ## Notas
 
 - [para-el-team.md](para-el-team.md) es el relato corto para el equipo.
