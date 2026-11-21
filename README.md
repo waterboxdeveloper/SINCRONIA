@@ -36,6 +36,51 @@ A las 11 Ana dice luz y gente de pie. El muro es eso. A las 16 Ana dice alguien 
 
 ## Qué entra el domingo
 
-Webapp en la red local, sobre una Jetson. El proyector abre el muro. La Jetson corre la sala, pasa las notas de voz y filtra lo que no trae figura. Los agentes y Nano Banana se llaman desde ahí.
+Webapp en la red local, sobre una Jetson. El proyector abre el muro. WhatsApp no entra.
 
 Si sobra tiempo, la misma capa puede moverse un momento. Si no está, el muro basta.
+
+## Stack
+
+Una app Next.js, servida por la Jetson en la red del lugar. Dos pantallas: `/sala` en el teléfono y `/muro` en el proyector.
+
+| Pieza | Dónde corre | Para qué |
+| --- | --- | --- |
+| Next.js | Jetson | La sala y el muro, en `jetson.local` |
+| Voz del navegador | Teléfono, Chrome | Transcribe en español sin subir el audio |
+| Whisper | Jetson | Si la voz del navegador falla, o si mandan un audio |
+| Filtro | Jetson | Vacío, insulto sin figura u orden al agente: no entra a la nota |
+| Agentes | xAI, llamados desde la Jetson | Uno por código, más el orquestador. La llave no sale del servidor |
+| Nano Banana | Desde la Jetson | Pinta la figura que quedó en la capa |
+| Tablero | Disco de la Jetson | `sentires/hora/codigo.md` y `capa/hora.md` |
+
+El código de cuatro letras vive en el navegador. Cada agente escribe solo su archivo. El orquestador lee las notas de esa hora y la capa anterior, y es el único que escribe `capa/`. La hora que ya pasó no se reabre.
+
+## La Jetson
+
+No publica nada a internet. Corre la app, oye la voz cuando el teléfono no puede, y frena lo que no trae figura antes de que llegue al tablero. El proyector y los teléfonos hablan con ella por la red local. Los agentes y Nano Banana salen desde ahí hacia afuera.
+
+## Flujo
+
+```mermaid
+flowchart TD
+  tel["Teléfono /sala\nvoz, texto o foto"] --> jet["Jetson"]
+  jet --> voz["Voz a texto"]
+  voz --> filtro["Filtro"]
+  filtro --> nota["sentires/hora/codigo.md\nlo escribe solo su agente"]
+  previa["capa de la hora anterior\nsolo lectura"] --> orq["Orquestador"]
+  nota --> orq
+  orq --> capa["capa/hora.md\nvisible, velado, palabra"]
+  capa --> pinta["Nano Banana"]
+  pinta --> muro["Proyector /muro"]
+  capa --> muro
+```
+
+## Notas
+
+- [para-el-team.md](para-el-team.md) es el relato corto para el equipo.
+- [idea-sincronia.md](idea-sincronia.md) es la idea completa. Al final queda lo que no se construye el domingo.
+- [pitch.md](pitch.md) es la frase de los corazones y lo que no hay que decir.
+- [system-prompt-mural.md](system-prompt-mural.md) es el prompt del orquestador.
+- [sintesis-articulos-arte.md](sintesis-articulos-arte.md) resume los papers.
+- [track-multiplayer.md](track-multiplayer.md) es la letra del track.
