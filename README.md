@@ -76,6 +76,41 @@ flowchart TD
   capa --> muro
 ```
 
+## Ideas de complementación
+
+No se construyen el domingo. Son lo que ya existe al lado, y lo que se puede sumar después.
+
+Nadie hace la capa. Estos se le acercan:
+
+- [Aura](https://github.com/ghubnerr/aura) vuelve video la emoción de una sola persona.
+- [ArtAI](https://github.com/SilentByte/artai) toma títulos que la sala publica y genera imágenes. Suma pedidos, no negocia.
+- [Este muro de graffiti](https://harshil.dev/writings/building-ai-graffiti-wall/) apila bocetos en una pared y los filtra. Cada dibujo se queda entero.
+- [Gaze to the Stars](https://www.media.mit.edu/publications/gaze-to-the-stars-ai-and-public-art-from-personal-affect-and-collective-empathy/) (NeurIPS 2025) junta el sentir de mucha gente y lo proyecta. Agrupa. No abre una grieta.
+- [Wonderland](https://github.com/theswerd/wonderland) muta un canvas compartido. Cualquiera pinta encima.
+- [wePaintAI](https://github.com/wepaintai/wepaintai) deja dibujar a varios y pasa el boceto por Flux Kontext.
+- [Emergent Atelier](https://www.emergentatelier.dev/) funde capas de varios agentes. Los humanos solo dejan un ánimo.
+- [Room Film](https://github.com/jeanethS/room-film) elige una escena por ánimo. No hay mural.
+
+De Emergent Atelier se puede tomar el fundido de capas. De Wonderland, pasarle al modelo la imagen de la hora anterior para que la nueva salga de esa.
+
+### Un agente que pinte, en vez de Nano Banana
+
+Existe. No es un modelo que escupe una foto: el agente mira el lienzo y pone trazos.
+
+- [paint-mcp](https://github.com/Mishaadevv/paint-mcp) le da pinceles, capas y deshacer. Cada herramienta le devuelve la foto.
+- [AgenticArt](https://github.com/miked63017/AgenticArt) pinta con el mismo pincel que una persona, trazo a trazo, en vivo.
+- [drawing-skill](https://github.com/jchapuis/drawing-skill) escribe cada marca a mano. Una escena son cientos de miles de tokens.
+- [DoodleAgent](https://github.com/YIFANK/DoodleAgent) elige pincel, color y coordenadas y vuelve a mirar el canvas. Hay paper de un workshop de ICCV 2025.
+- [AgentBrush](https://github.com/hdelattre/AgentBrush), [ALIGN](https://github.com/wanshuiyin/ALIGN-Agentic-Loop-Image-GeneratioN) y [Agent Paint](https://lobehub.com/mcp/minebot17-agent-paint) hacen la misma vuelta: dibujar, mirar, corregir. Sin difusión.
+
+Para el domingo no. Una pared tardaría minutos y se comería el presupuesto de tokens. El muro de la demo lo pinta una sola llamada, con la imagen de la hora anterior como referencia. Nano Banana, o [FLUX Kontext](https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev) si no hay llave de Google.
+
+El complemento, cuando sobre tiempo, es ese pintor. El orquestador sigue decidiendo la capa. El agente de pintura pone los trazos encima, y la sala ve cómo se vela la hora anterior. Ahí el cineminuto sale solo: el video es la mano pintando, no un clip generado.
+
+En la Jetson no cabe un FLUX. Cabe Whisper pequeño multilingüe, para cuando la voz del navegador falle. Los LoRA de caras tristes o enojadas de Hugging Face no sirven: etiquetan una expresión, no pintan la figura de la sala.
+
+Instagram y publicar afuera quedan fuera. La obra es la pared de la sala.
+
 ## Notas
 
 - [para-el-team.md](para-el-team.md) es el relato corto para el equipo.
